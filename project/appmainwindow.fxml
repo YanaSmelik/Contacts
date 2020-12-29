@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.Controller">
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane  fx:id="mainPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.Controller">
    <children>
       <VBox GridPane.rowIndex="1">
          <children>
-            <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <TableView fx:id="contactsTableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
               <columns>
                 <TableColumn maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="First Name" />
                 <TableColumn maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Last Name" />
@@ -24,9 +22,9 @@
             </TableView>
          </children>
       </VBox>
-      <MenuBar>
+      <MenuBar >
         <menus>
-          <Menu mnemonicParsing="false" text="Contacts">
+          <Menu mnemonicParsing="false" text="Contacts" >
             <items>
               <MenuItem mnemonicParsing="false" text="Add" />
                   <MenuItem mnemonicParsing="false" text="Delete" />
@@ -36,12 +34,4 @@
         </menus>
       </MenuBar>
    </children>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-</GridPane>
+</BorderPane>

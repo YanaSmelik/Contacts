@@ -27,14 +27,34 @@ public class ContactData {
     private static final String LAST_NAME = "last_name";
     private static final String PHONE_NUMBER = "phone_number";
     private static final String NOTES = "notes";
+    private static ContactData instance = new ContactData();
 
     private ObservableList<Contact> contacts;
 
-    public ContactData() {
+    private ContactData() {
+
         // TODO *** initialize the contacts list here ***
     }
 
-    // TODO *** Add methods to add/delete/access contacts here ***
+    public static ContactData getInstance(){
+        return instance;
+    }
+
+    public ObservableList<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void addContact(Contact contact){
+        contacts.add(contact);
+    }
+
+    public void deleteContact(Contact contact){
+        contacts.remove(contact);
+    }
+
+    public void editContact(Contact contact){
+        // TODO edit contact
+    }
 
     public void loadContacts() {
         try {
@@ -104,7 +124,7 @@ public class ContactData {
         }
     }
 
-    public void saveContacts() {
+    public void storeContacts() {
 
         try {
             // create an XMLOutputFactory
@@ -125,7 +145,7 @@ public class ContactData {
             eventWriter.add(end);
 
             for (Contact contact: contacts) {
-                saveContact(eventWriter, eventFactory, contact);
+                storeContact(eventWriter, eventFactory, contact);
             }
 
             eventWriter.add(eventFactory.createEndElement("", "", "contacts"));
@@ -143,7 +163,7 @@ public class ContactData {
         }
     }
 
-    private void saveContact(XMLEventWriter eventWriter, XMLEventFactory eventFactory, Contact contact)
+    private void storeContact(XMLEventWriter eventWriter, XMLEventFactory eventFactory, Contact contact)
             throws FileNotFoundException, XMLStreamException {
 
         XMLEvent end = eventFactory.createDTD("\n");

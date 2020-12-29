@@ -5,12 +5,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import project.data.ContactData;
+
+import java.io.IOException;
 
 public class Main extends Application {
+
+    ContactData contactData = new ContactData();
+
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("appmainwindow.fxml"));
+        setUserAgentStylesheet(STYLESHEET_CASPIAN);
         primaryStage.setTitle("My Contacts");
         primaryStage.setScene(new Scene(root, 600, 375));
         primaryStage.show();
@@ -19,5 +26,15 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void init() {
+        contactData.loadContacts();
+    }
+
+    @Override
+    public void stop(){
+        contactData.storeContacts();
     }
 }
