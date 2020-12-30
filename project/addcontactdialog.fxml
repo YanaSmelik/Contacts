@@ -33,8 +33,10 @@
                 <Label text="Phone Number:" GridPane.rowIndex="2" />
                 <Label text="Notes:" GridPane.rowIndex="3" />
                 <TextField fx:id="notesTextField" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" />
-                <Button fx:id="saveButton" mnemonicParsing="false" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                <Button mnemonicParsing="false" text="Cancel" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                <Button fx:id="saveButton" onAction="#handleSavePressed"
+                        mnemonicParsing="false" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                <Button fx:id="cancelButton" onAction="#handleCancelPressed"
+                        mnemonicParsing="false" text="Cancel" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             </children>
         </GridPane>
     </content>
