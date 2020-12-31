@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import project.data.Contact;
 import project.data.ContactData;
@@ -26,12 +26,13 @@ public class Controller {
     @FXML
     private MenuItem addMenuItem;
     @FXML
-    private Button cancelButton;
+    private TableColumn<Contact, String> firstNameColumn;
     @FXML
-    private Button saveButton;
-
-    private FXMLLoader fxmlLoader;
-
+    private TableColumn<Contact, String> lastNameColumn;
+    @FXML
+    private TableColumn<Contact, String> phoneNumberColumn;
+    @FXML
+    private TableColumn<Contact, String> notesColumn;
 
     public void initialize() {
         deleteMenuItem.setOnAction(new EventHandler<ActionEvent>() {
@@ -54,10 +55,18 @@ public class Controller {
                 displayAddContactDialog();
             }
         });
+
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        notesColumn.setCellValueFactory(new PropertyValueFactory<>("notes"));
+        contactsTableView.setItems(ContactData.getInstance().getContacts());
+        contactsTableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        contactsTableView.getSelectionModel().selectFirst();
     }
 
     public void displayAddContactDialog() {
-        Dialog<Button> dialog = new Dialog<>();
+        Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initOwner(mainPane.getScene().getWindow());
         dialog.setTitle("Add Contact");
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -69,14 +78,13 @@ public class Controller {
             return;
         }
 
-        Optional<Button> result = dialog.showAndWait();
-        if (result.isPresent() && result.get() == saveButton) {
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+       Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
             DialogController controller = fxmlLoader.getController();
-            Contact contact = controller.parseData();
-            ContactData.getInstance().addContact(contact);
-            contactsTableView.getSelectionModel().select(contact);
+            ContactData.getInstance().addContact(controller.parseData());
         }
     }
-
-
 }

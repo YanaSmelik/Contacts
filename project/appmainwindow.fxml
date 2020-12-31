@@ -18,10 +18,10 @@
                 <TableView fx:id="contactsTableView" maxHeight="1.7976931348623157E308"
                            maxWidth="1.7976931348623157E308">
                     <columns>
-                        <TableColumn maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="First Name"/>
-                        <TableColumn maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Last Name"/>
-                        <TableColumn maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Phone Number"/>
-                        <TableColumn maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Notes"/>
+                        <TableColumn fx:id="firstNameColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="First Name"/>
+                        <TableColumn fx:id="lastNameColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Last Name"/>
+                        <TableColumn fx:id="phoneNumberColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Phone Number"/>
+                        <TableColumn fx:id="notesColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Notes"/>
                     </columns>
                 </TableView>
             </children>

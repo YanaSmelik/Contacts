@@ -16,6 +16,7 @@ public class Contact {
         this.notes = notes;
     }
 
+
     public String getFirstName() {
         return firstName;
     }

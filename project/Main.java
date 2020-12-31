@@ -5,10 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import project.data.Contact;
-import project.data.ContactData;
 
-import java.io.IOException;
+
+import static project.data.ContactData.*;
 
 public class Main extends Application {
 
@@ -29,13 +28,13 @@ public class Main extends Application {
         launch(args);
     }
 
-    /*@Override
+    @Override
     public void init() {
-        ContactData.getInstance().loadContacts();
-    }*/
+        getInstance().loadContacts();
+    }
 
-   /* @Override
+    @Override
     public void stop(){
-        ContactData.getInstance().storeContacts();
-    }*/
+        getInstance().storeContacts();
+    }
 }

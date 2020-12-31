@@ -1,5 +1,6 @@
 package project.data;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.xml.stream.XMLEventFactory;
@@ -32,9 +33,8 @@ public class ContactData {
     private ObservableList<Contact> contacts;
 
     private ContactData() {
-
-        // TODO *** initialize the contacts list here ***
-    }
+        contacts = FXCollections.observableArrayList();
+     }
 
     public static ContactData getInstance(){
         return instance;
