@@ -46,13 +46,14 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 Contact contact = contactsTableView.getSelectionModel().getSelectedItem();
-                ContactData.getInstance().editContact(contact);
+                displayEditContactDialog(contact);
             }
         });
         addMenuItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 displayAddContactDialog();
+
             }
         });
 
@@ -84,8 +85,34 @@ public class Controller {
        Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             DialogController controller = fxmlLoader.getController();
-            ContactData.getInstance().addContact(controller.parseData());
+            Contact contact = controller.parseData();
+            ContactData.getInstance().addContact(contact);
+            contactsTableView.getSelectionModel().select(contact);
         }
     }
 
+    public void displayEditContactDialog(Contact contact){
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainPane.getScene().getWindow());
+        dialog.setTitle("Edit Contact");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("addcontactdialog.fxml"));
+        try{
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        }catch (IOException e){
+            e.printStackTrace();
+            return;
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.APPLY);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        DialogController controller = fxmlLoader.getController();
+        controller.fillDialogWithData(contact);
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.APPLY){
+            ContactData.getInstance().deleteContact(contact);
+            Contact newContact = controller.parseData();
+            ContactData.getInstance().addContact(newContact);
+            contactsTableView.getSelectionModel().select(newContact);
+        }
+    }
 }

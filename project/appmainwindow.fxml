@@ -12,32 +12,6 @@
 
 <GridPane fx:id="mainPane" alignment="center" xmlns="http://javafx.com/javafx/11.0.1"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.Controller">
-    <children>
-        <VBox GridPane.rowIndex="1">
-            <children>
-                <TableView fx:id="contactsTableView" maxHeight="1.7976931348623157E308"
-                           maxWidth="1.7976931348623157E308">
-                    <columns>
-                        <TableColumn fx:id="firstNameColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="First Name"/>
-                        <TableColumn fx:id="lastNameColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Last Name"/>
-                        <TableColumn fx:id="phoneNumberColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Phone Number"/>
-                        <TableColumn fx:id="notesColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Notes"/>
-                    </columns>
-                </TableView>
-            </children>
-        </VBox>
-        <MenuBar>
-            <menus>
-                <Menu mnemonicParsing="false" text="Contacts">
-                    <items>
-                        <MenuItem fx:id="addMenuItem" mnemonicParsing="false" text="Add"/>
-                        <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" text="Delete"/>
-                        <MenuItem fx:id="editMenuItem" mnemonicParsing="false" text="Edit"/>
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-    </children>
     <rowConstraints>
         <RowConstraints/>
         <RowConstraints/>
@@ -46,4 +20,25 @@
     <columnConstraints>
         <ColumnConstraints/>
     </columnConstraints>
+    <VBox GridPane.rowIndex="1">
+        <TableView fx:id="contactsTableView" maxHeight="1.7976931348623157E308"
+                   maxWidth="1.7976931348623157E308">
+            <columns>
+                <TableColumn fx:id="firstNameColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0"
+                             text="First Name"/>
+                <TableColumn fx:id="lastNameColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0"
+                             text="Last Name"/>
+                <TableColumn fx:id="phoneNumberColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0"
+                             text="Phone Number"/>
+                <TableColumn fx:id="notesColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Notes"/>
+            </columns>
+        </TableView>
+    </VBox>
+    <MenuBar>
+        <Menu mnemonicParsing="false" text="Contacts">
+            <MenuItem fx:id="addMenuItem" mnemonicParsing="false" text="Add"/>
+            <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" text="Delete"/>
+            <MenuItem fx:id="editMenuItem" mnemonicParsing="false" text="Edit"/>
+        </Menu>
+    </MenuBar>
 </GridPane>

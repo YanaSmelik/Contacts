@@ -67,10 +67,6 @@ public class ContactData {
 
     }
 
-    public void editContact(Contact contact){
-        // TODO edit contact
-    }
-
     public void loadContacts() {
         try {
             // First, create a new XMLInputFactory
