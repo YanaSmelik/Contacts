@@ -92,6 +92,7 @@ public class ContactData {
                         if (event.asStartElement().getName().getLocalPart()
                                 .equals(FIRST_NAME)) {
                             event = eventReader.nextEvent();
+                            assert contact != null;
                             contact.setFirstName(event.asCharacters().getData());
                             continue;
                         }
@@ -99,6 +100,7 @@ public class ContactData {
                     if (event.asStartElement().getName().getLocalPart()
                             .equals(LAST_NAME)) {
                         event = eventReader.nextEvent();
+                        assert contact != null;
                         contact.setLastName(event.asCharacters().getData());
                         continue;
                     }
@@ -106,6 +108,7 @@ public class ContactData {
                     if (event.asStartElement().getName().getLocalPart()
                             .equals(PHONE_NUMBER)) {
                         event = eventReader.nextEvent();
+                        assert contact != null;
                         contact.setPhoneNumber(event.asCharacters().getData());
                         continue;
                     }
@@ -113,6 +116,7 @@ public class ContactData {
                     if (event.asStartElement().getName().getLocalPart()
                             .equals(NOTES)) {
                         event = eventReader.nextEvent();
+                        assert contact != null;
                         contact.setNotes(event.asCharacters().getData());
                         continue;
                     }
@@ -127,10 +131,7 @@ public class ContactData {
                 }
             }
         }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        catch (XMLStreamException e) {
+        catch (FileNotFoundException | XMLStreamException e) {
             e.printStackTrace();
         }
     }
@@ -175,7 +176,7 @@ public class ContactData {
     }
 
     private void storeContact(XMLEventWriter eventWriter, XMLEventFactory eventFactory, Contact contact)
-            throws FileNotFoundException, XMLStreamException {
+            throws XMLStreamException {
 
         XMLEvent end = eventFactory.createDTD("\n");
 
