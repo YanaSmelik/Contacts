@@ -39,7 +39,7 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
                 Contact contact = contactsTableView.getSelectionModel().getSelectedItem();
-                ContactData.getInstance().deleteContact(contact);
+                ContactData.getInstance().deleteContactAlert(contact);
             }
         });
         editMenuItem.setOnAction(new EventHandler<ActionEvent>() {
@@ -87,4 +87,5 @@ public class Controller {
             ContactData.getInstance().addContact(controller.parseData());
         }
     }
+
 }

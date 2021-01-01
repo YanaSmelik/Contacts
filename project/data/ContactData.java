@@ -2,6 +2,8 @@ package project.data;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 import javax.xml.stream.XMLEventFactory;
 import javax.xml.stream.XMLEventReader;
@@ -18,6 +20,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.Optional;
 
 
 public class ContactData {
@@ -50,6 +53,18 @@ public class ContactData {
 
     public void deleteContact(Contact contact){
         contacts.remove(contact);
+    }
+
+    public void deleteContactAlert(Contact contact){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Contact");
+        alert.setHeaderText("Delete contact: " + contact.getFirstName() + " " + contact.getLastName() + "?");
+        alert.setContentText("Do you really want to delete the contact?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            ContactData.getInstance().deleteContact(contact);
+        }
+
     }
 
     public void editContact(Contact contact){
