@@ -21,26 +21,10 @@
     <center>
             <TableView fx:id="contactsTableView">
                 <columns>
-                    <TableColumn  fx:id="firstNameColumn" text="First Name">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="lastName"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="lastNameColumn" text="Last Name">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="lastName"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="phoneNumberColumn" text="Phone Number">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="phoneNumber"/>
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="notesColumn" text="Notes">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="notes"/>
-                        </cellValueFactory>
-                    </TableColumn>
+                    <TableColumn  fx:id="firstNameColumn" text="First Name"/>
+                    <TableColumn fx:id="lastNameColumn" text="Last Name"/>
+                    <TableColumn fx:id="phoneNumberColumn" text="Phone Number"/>
+                    <TableColumn fx:id="notesColumn" text="Notes"/>
                 </columns>
             </TableView>
     </center>
