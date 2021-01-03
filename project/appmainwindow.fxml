@@ -5,40 +5,43 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 
-<GridPane fx:id="mainPane" alignment="center" xmlns="http://javafx.com/javafx/11.0.1"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.Controller">
-    <rowConstraints>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints/>
-    </rowConstraints>
-    <columnConstraints>
-        <ColumnConstraints/>
-    </columnConstraints>
-    <VBox GridPane.rowIndex="1">
-        <TableView fx:id="contactsTableView" maxHeight="1.7976931348623157E308"
-                   maxWidth="1.7976931348623157E308">
-            <columns>
-                <TableColumn fx:id="firstNameColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0"
-                             text="First Name"/>
-                <TableColumn fx:id="lastNameColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0"
-                             text="Last Name"/>
-                <TableColumn fx:id="phoneNumberColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0"
-                             text="Phone Number"/>
-                <TableColumn fx:id="notesColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Notes"/>
-            </columns>
-        </TableView>
-    </VBox>
-    <MenuBar>
-        <Menu mnemonicParsing="false" text="Contacts">
-            <MenuItem fx:id="addMenuItem" mnemonicParsing="false" text="Add"/>
-            <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" text="Delete"/>
-            <MenuItem fx:id="editMenuItem" mnemonicParsing="false" text="Edit"/>
-        </Menu>
-    </MenuBar>
-</GridPane>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<BorderPane fx:id="mainPane" xmlns:fx="http://javafx.com/fxml" fx:controller="project.Controller">
+    <top>
+        <MenuBar>
+            <Menu mnemonicParsing="false" text="Contacts">
+                <MenuItem fx:id="addMenuItem" mnemonicParsing="false" text="Add"/>
+                <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" text="Delete"/>
+                <MenuItem fx:id="editMenuItem" mnemonicParsing="false" text="Edit"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+            <TableView fx:id="contactsTableView">
+                <columns>
+                    <TableColumn  fx:id="firstNameColumn" text="First Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="lastName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="lastNameColumn" text="Last Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="lastName"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="phoneNumberColumn" text="Phone Number">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="phoneNumber"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="notesColumn" text="Notes">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="notes"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+    </center>
+</BorderPane>

@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.BorderPane;
 import project.data.Contact;
 import project.data.ContactData;
 
@@ -18,7 +18,7 @@ public class Controller {
     @FXML
     private TableView<Contact> contactsTableView;
     @FXML
-    private GridPane mainPane;
+    private BorderPane mainPane;
     @FXML
     private MenuItem deleteMenuItem;
     @FXML
